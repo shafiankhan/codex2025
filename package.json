@@ -1,0 +1,47 @@
+{
+  "name": "cardano-career-navigator",
+  "version": "1.0.0",
+  "description": "A Masumi AI agent that provides personalized career guidance for the Cardano ecosystem",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "vitest --run",
+    "serve": "node src/server.js",
+    "dev-server": "node --watch src/server.js",
+    "dapp": "node start-dapp.js",
+    "deploy": "node deploy-masumi.js",
+    "deploy:dev": "cross-env NODE_ENV=development CARDANO_NETWORK=preprod node deploy-masumi.js",
+    "deploy:prod": "cross-env NODE_ENV=production CARDANO_NETWORK=mainnet node deploy-masumi.js",
+    "demo": "node src/working-demo.js",
+    "test:roadmap": "npm test src/roadmap.test.js",
+    "test:analyzer": "npm test src/analyzer.test.js"
+  },
+  "keywords": [
+    "cardano",
+    "career",
+    "masumi",
+    "blockchain",
+    "ai-agent",
+    "begin-wallet"
+  ],
+  "author": "Cardano Career Navigator Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@meshsdk/core": "^1.9.0-beta.74",
+    "axios": "^1.12.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "cross-env": "^10.0.0",
+    "vitest": "^3.2.4"
+  },
+  "notes": {
+    "masumi-sdk": "To be installed when available - placeholder for Masumi platform integration"
+  }
+}

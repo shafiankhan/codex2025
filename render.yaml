@@ -1,0 +1,26 @@
+{
+  "services": [
+    {
+      "type": "web",
+      "name": "cardano-career-navigator",
+      "env": "python",
+      "buildCommand": "pip install -r requirements.txt",
+      "startCommand": "python main.py api",
+      "healthCheckPath": "/availability",
+      "envVars": [
+        {
+          "key": "OPENAI_API_KEY",
+          "sync": false
+        },
+        {
+          "key": "MASUMI_API_KEY",
+          "sync": false
+        },
+        {
+          "key": "PAYMENT_API_KEY",
+          "sync": false
+        }
+      ]
+    }
+  ]
+}

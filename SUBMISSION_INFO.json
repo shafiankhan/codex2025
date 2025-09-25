@@ -1,0 +1,35 @@
+{
+  "agent_name": "Cardano Career Navigator",
+  "description": "CrewAI agent providing personalized Cardano ecosystem career guidance",
+  "framework": "CrewAI + FastAPI",
+  "use_case": {
+    "web2": "Career guidance, skills assessment, personalized learning paths",
+    "web3": "On-chain analysis, Cardano integration, NFT achievements, eSIM rewards"
+  },
+  "services": {
+    "assessment": "0.5 ADA - Wallet activity analysis for skills assessment",
+    "roadmap": "1.5 ADA - Personalized career roadmap generation",
+    "catalyst": "3.0 ADA - Project Catalyst proposal guidance"
+  },
+  "unique_features": [
+    "Begin Wallet integration for progress tracking",
+    "eSIM rewards for learning milestones",
+    "On-chain achievement NFTs",
+    "Real-time Catalyst opportunity matching",
+    "Cardano-specific career paths"
+  ],
+  "api_endpoints": [
+    "GET /input_schema - Input requirements",
+    "GET /availability - Service availability",
+    "POST /start_job - Start AI task",
+    "GET /status - Job status"
+  ],
+  "deployment_options": [
+    "Railway (recommended)",
+    "Render",
+    "Heroku",
+    "Docker"
+  ],
+  "submission_date": "2025-09-25T14:34:36.165695",
+  "challenge_url": "https://masumi.agorize-platform.com/en/challenges/india-codex-masumi-track"
+}
