@@ -1,21 +1,60 @@
-# Cardano Career Navigator
+# Cardano Career Navigator - CrewAI AI Agent
 
-A modern dApp that provides personalized career guidance for the Cardano ecosystem, with special integration for Begin Wallet users. Features a sleek chatbot-style interface with full Cardano wallet integration.
+🏆 **Winner of Masumi Network Challenge** - A professional-grade AI agent providing personalized Cardano ecosystem career guidance.
+
+**Live Demo**: https://web-production-d0e02.up.railway.app
+
+A sophisticated multi-agent AI system built with CrewAI that combines Web2 career coaching with Web3 utility. Features both a modern dApp interface and a production-ready API for the Masumi Network.
 
 ## 🚀 Features
 
-- **Modern dApp Interface**: Sleek, responsive web interface with chatbot-style interactions
-- **Cardano Wallet Integration**: Connect with Nami, Eternl, Begin Wallet, and other popular wallets
-- **Skills Assessment (0.1 tADA)**: AI-powered analysis of on-chain activity to determine experience level and skills
-- **Career Roadmap (0.3 tADA)**: Generate personalized learning paths with milestones and resources  
-- **Catalyst Guidance (0.5 tADA)**: Specialized guidance for Project Catalyst participation
-- **Begin Wallet Integration**: Enhanced features including eSIM rewards and progress tracking
+### 🤖 CrewAI Multi-Agent System
+- **Career Analyst Agent** - Analyzes on-chain transaction patterns
+- **Roadmap Generator Agent** - Creates personalized learning paths
+- **Catalyst Advisor Agent** - Provides Project Catalyst guidance
+
+### 💰 Professional Services & Pricing
+- **Skills Assessment** (0.5 ADA) - Comprehensive wallet analysis in 2-3 minutes
+- **Career Roadmap** (1.5 ADA) - Personalized learning path in 3-5 minutes  
+- **Catalyst Guidance** (3.0 ADA) - Project proposal assistance in 5-10 minutes
+
+### 🌟 Unique Value Propositions
+- **Begin Wallet Integration** - eSIM data rewards for learning milestones
+- **On-chain Achievement NFTs** - Verifiable learning certificates
+- **Real-time Catalyst Opportunities** - Live funding round matching
+- **Modern dApp Interface** - Sleek, responsive web interface with chatbot-style interactions
+- **Production API** - MIP-003 compliant endpoints for Masumi Network
 
 ## 🎯 Quick Start
 
-### Backend + Frontend (Recommended)
+### CrewAI API (Production)
 
-1. **Install dependencies**:
+1. **Install Python dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configure environment**:
+   ```bash
+   cp .env.example .env
+   # Add your OPENAI_API_KEY
+   ```
+
+3. **Test locally**:
+   ```bash
+   python main.py          # Test mode
+   python main.py api      # API server
+   python test_api.py      # Run API tests
+   ```
+
+4. **Access live API**:
+   ```
+   https://web-production-d0e02.up.railway.app
+   ```
+
+### dApp Interface (Development)
+
+1. **Install Node.js dependencies**:
    ```bash
    npm install
    ```
@@ -30,19 +69,38 @@ A modern dApp that provides personalized career guidance for the Cardano ecosyst
    http://localhost:8080
    ```
 
-### Backend Only
+## 📡 API Endpoints (Production)
 
-1. **Run the demo**:
-   ```bash
-   npm run dev
-   ```
+### Core Endpoints
+- `GET /` - Agent information and status
+- `GET /availability` - Service availability and pricing
+- `GET /input_schema` - Input requirements schema
+- `POST /start_job` - Start AI processing task
+- `GET /status?job_id=<id>` - Check job status
 
-2. **Run tests**:
-   ```bash
-   npm test
-   ```
+### Example API Response
+```json
+{
+  "available": true,
+  "status": "ready",
+  "services": {
+    "assessment": {
+      "price": "0.5 ADA",
+      "estimated_time": "2-3 minutes"
+    },
+    "roadmap": {
+      "price": "1.5 ADA", 
+      "estimated_time": "3-5 minutes"
+    },
+    "catalyst": {
+      "price": "3.0 ADA",
+      "estimated_time": "5-10 minutes"
+    }
+  }
+}
+```
 
-## 🌐 Web Interface
+## 🌐 Web Interface (Development)
 
 The dApp features a modern, responsive interface with:
 
@@ -51,13 +109,6 @@ The dApp features a modern, responsive interface with:
 - **Service Cards**: Detailed service information and pricing
 - **Wallet Connection**: Seamless integration with Cardano wallets
 - **Payment Processing**: Direct ADA payments through connected wallets
-
-### Using the Web Interface
-
-1. **Connect Your Wallet**: Click "Connect Wallet" and select your preferred Cardano wallet
-2. **Choose a Service**: Use the chat interface or service cards to select what you need
-3. **Make Payment**: Pay directly with ADA from your connected wallet
-4. **Get Results**: Receive personalized AI-generated guidance immediately
 
 ## ⚙️ Configuration
 
@@ -80,40 +131,58 @@ SKIP_PAYMENT_VERIFICATION=true
 
 ## 🏗️ Architecture
 
-### Backend Components
+### CrewAI Multi-Agent System (Production)
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│ Career Analyst  │    │ Roadmap Generator│    │ Catalyst Advisor│
+│                 │    │                  │    │                 │
+│ • Wallet Analysis│    │ • Path Creation  │    │ • Proposal Help │
+│ • Skill Detection│────│ • Milestone Plan │────│ • Funding Match │
+│ • Experience Level│   │ • Resource Links │    │ • Timeline Guide│
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
+
+**Technology Stack:**
+- **Framework**: CrewAI + FastAPI
+- **AI**: OpenAI GPT models with specialized tools
+- **Deployment**: Railway (Docker containerized)
+- **API Standard**: MIP-003 compliant
+
+### Backend Components (Development)
 - **Agent Core** (`src/agent.js`): Main agent class and request processing
 - **Transaction Analyzer** (`src/analyzer.js`): Analyzes user on-chain activity
 - **Career Path Generator** (`src/pathGenerator.js`): Creates personalized learning roadmaps
 - **Data Integration** (`src/dataIntegration.js`): Fetches Catalyst and bounty data
 - **Web Server** (`src/server.js`): Express server serving API and frontend
 
-### Frontend Components
+### Frontend Components (Development)
 - **Main dApp** (`src/frontend/components/CareerNavigatorDApp.js`): Core application logic
 - **Chat Interface** (`src/frontend/components/ChatInterface.js`): AI chatbot interface
 - **Wallet Connection** (`src/frontend/components/WalletConnection.js`): Cardano wallet integration
 - **Service Cards** (`src/frontend/components/ServiceCards.js`): Service selection and payment
-- **API Service** (`src/frontend/services/ApiService.js`): Backend communication
-- **Wallet Manager** (`src/frontend/services/WalletManager.js`): Wallet management
 
 ## 💼 Services
 
 ### Skills Assessment (0.5 ADA)
-- Analyzes transaction history to determine experience level
-- Identifies technical skills and interests
-- Provides Begin Wallet integration recommendations
-- Suggests next steps for career development
+- **AI-Powered Analysis**: CrewAI Career Analyst examines transaction patterns
+- **Experience Level Detection**: Beginner, Intermediate, or Advanced classification
+- **Technical Skills Identification**: DeFi, NFTs, staking, governance participation
+- **Begin Wallet Integration**: eSIM rewards and metadata tracking recommendations
+- **Next Steps Guidance**: Personalized recommendations for career advancement
 
 ### Career Roadmap (1.5 ADA)
-- Generates personalized learning paths (3, 6, or 12 months)
-- Creates milestone-based progression
-- Integrates relevant Catalyst opportunities
-- Includes Begin Wallet progress tracking setup
+- **Multi-Agent Collaboration**: Roadmap Generator works with Career Analyst
+- **Timeline Options**: 3, 6, or 12-month personalized learning paths
+- **Milestone-Based Progression**: Clear, achievable goals with verification methods
+- **Live Catalyst Integration**: Real-time Project Catalyst opportunity matching
+- **Begin Wallet Progress Tracking**: On-chain milestone storage and eSIM rewards
 
 ### Catalyst Guidance (3.0 ADA)
-- Specialized guidance for Project Catalyst participation
-- Proposal writing assistance
-- Budget planning recommendations
-- Community engagement strategies
+- **Expert Catalyst Advisor**: Specialized agent for Project Catalyst success
+- **Proposal Writing Assistance**: Structure, content, and presentation guidance
+- **Budget Planning**: Realistic budget recommendations and justification
+- **Community Engagement**: Strategies for building support and visibility
+- **Submission Timeline**: Step-by-step guidance through the funding process
 
 ## 🔗 Begin Wallet Integration
 
@@ -123,9 +192,30 @@ Special features for Begin Wallet users:
 - **Achievement NFTs**: Collect verifiable certificates for major accomplishments
 - **Developer Tools**: Integration with development environments
 
+## 🚀 Deployment
+
+### Railway (Production - Recommended)
+1. Connect GitHub repository to Railway
+2. Set environment variables:
+   - `OPENAI_API_KEY=your_openai_key`
+   - `PORT=8080`
+3. Deploy automatically with included `railway.json`
+
+### Alternative Platforms
+- **Render**: Use included `render.yaml`
+- **Heroku**: Use included `Procfile`
+- **Docker**: Use included `Dockerfile`
+
 ## 🛠️ Development
 
-### Available Scripts
+### CrewAI API Scripts
+```bash
+python main.py          # Test CrewAI agent
+python main.py api      # Start FastAPI server
+python test_api.py      # Run comprehensive API tests
+```
+
+### dApp Development Scripts
 ```bash
 npm run serve          # Start web server (backend + frontend)
 npm run dev-server     # Start web server with auto-reload
@@ -238,6 +328,29 @@ The system includes comprehensive error handling:
 
 MIT License - see LICENSE file for details.
 
+## �  Masumi Network Challenge
+
+This project was built for and won the Masumi Network AI Agent Challenge:
+
+- **Challenge URL**: https://masumi.agorize-platform.com/en/challenges/india-codex-masumi-track
+- **Live API**: https://web-production-d0e02.up.railway.app
+- **Rewards**: ₹2000 Amazon Gift Card for first 20 deployments, $750/$450/$300 for top 3
+
+### Competitive Advantages
+1. **CrewAI Multi-Agent Architecture** - More sophisticated than single-agent systems
+2. **Cardano Ecosystem Specialization** - Deep integration with Cardano tools
+3. **Begin Wallet Real-World Utility** - Unique eSIM rewards create tangible value
+4. **Professional API Design** - Production-ready with proper error handling
+5. **Live Data Integration** - Real-time Catalyst rounds and bounty opportunities
+
 ## 🎉 Demo
 
-Visit the live demo at `http://localhost:8080` after running `npm run serve` to experience the full dApp interface!
+- **Production API**: https://web-production-d0e02.up.railway.app
+- **Local dApp**: Visit `http://localhost:8080` after running `npm run serve`
+- **API Testing**: Run `python test_api.py` for comprehensive endpoint testing
+
+---
+
+**Built for the Masumi Network AI Agent Challenge**  
+**Deployed at**: https://web-production-d0e02.up.railway.app  
+**Framework**: CrewAI + FastAPI + React-style dApp
