@@ -336,9 +336,8 @@ MIT License - see LICENSE file for details.
 
 This project was built for and won the Masumi Network AI Agent Challenge:
 
-- **Challenge URL**: https://masumi.agorize-platform.com/en/challenges/india-codex-masumi-track
+
 - **Live API**: https://web-production-d0e02.up.railway.app
-- **Rewards**: ₹2000 Amazon Gift Card for first 20 deployments, $750/$450/$300 for top 3
 
 ### Competitive Advantages
 1. **CrewAI Multi-Agent Architecture** - More sophisticated than single-agent systems
@@ -369,10 +368,9 @@ asumi Network Challenge Submission
 - **✅ Production Ready**: MIP-003 compliant API with proper error handling
 
 ### 🚀 Submission Details
-- **Challenge URL**: https://masumi.agorize-platform.com/en/challenges/india-codex-masumi-track
 - **Live API**: https://web-production-d0e02.up.railway.app
 - **Demo**: [masumi-demo.html](./masumi-demo.html) - Complete integration showcase
-- **Rewards**: ₹2000 Amazon Gift Card (first 20) + $750/$450/$300 (top 3)
+
 
 ### 🏅 Competitive Advantages
 1. **✅ CrewAI Multi-Agent System** - Sophisticated AI architecture with specialized agents
