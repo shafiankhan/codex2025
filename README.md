@@ -1,10 +1,12 @@
 # Cardano Career Navigator - CrewAI AI Agent
 
-🏆 **Winner of Masumi Network Challenge** - A professional-grade AI agent providing personalized Cardano ecosystem career guidance.
+🏆 **Masumi Network Challenge Submission** - A professional-grade AI agent providing personalized Cardano ecosystem career guidance.
 
-**Live Demo**: https://web-production-d0e02.up.railway.app
+**🚀 Live API**: https://web-production-d0e02.up.railway.app  
+**🎮 Demo**: [masumi-demo.html](./masumi-demo.html) - Complete integration demo  
+**📋 Challenge**: https://masumi.agorize-platform.com/en/challenges/india-codex-masumi-track
 
-A sophisticated multi-agent AI system built with CrewAI that combines Web2 career coaching with Web3 utility. Features both a modern dApp interface and a production-ready API for the Masumi Network.
+A sophisticated multi-agent AI system built with CrewAI that combines Web2 career coaching with Web3 utility. Features complete Masumi Network integration, Begin Wallet support, and production-ready deployment.
 
 ## 🚀 Features
 
@@ -18,56 +20,58 @@ A sophisticated multi-agent AI system built with CrewAI that combines Web2 caree
 - **Career Roadmap** (1.5 ADA) - Personalized learning path in 3-5 minutes  
 - **Catalyst Guidance** (3.0 ADA) - Project proposal assistance in 5-10 minutes
 
-### 🌟 Unique Value Propositions
+### 🌟 Masumi Network Integration
+- **✅ Complete Masumi Integration** - Live API deployed and tested
+- **✅ Wallet Connection Success Flow** - Professional UX after wallet connection
+- **✅ Testnet Payment Processing** - Seamless payment simulation
+- **✅ Job Status Tracking** - Real-time processing updates
+- **✅ Begin Wallet Support** - Full integration with eSIM rewards
+- **✅ Production Ready** - MIP-003 compliant API endpoints
+
+### 🎯 Unique Value Propositions
 - **Begin Wallet Integration** - eSIM data rewards for learning milestones
 - **On-chain Achievement NFTs** - Verifiable learning certificates
 - **Real-time Catalyst Opportunities** - Live funding round matching
-- **Modern dApp Interface** - Sleek, responsive web interface with chatbot-style interactions
-- **Production API** - MIP-003 compliant endpoints for Masumi Network
+- **Modern dApp Interface** - Sleek, responsive web interface
+- **Multi-Platform Deployment** - Railway, Render, Heroku ready
 
 ## 🎯 Quick Start
 
-### CrewAI API (Production)
+### 🎮 Try the Demo (Recommended)
+1. **Open the demo**: [masumi-demo.html](./masumi-demo.html) in your browser
+2. **Click "Connect Wallet"** to see the complete Masumi integration flow
+3. **Test payment processing** with any Cardano wallet (including Begin Wallet)
+4. **Experience the success flow** with next steps and job tracking
 
-1. **Install Python dependencies**:
+### 🚀 CrewAI API (Production)
+
+1. **Test the live API**:
+   ```bash
+   curl https://web-production-d0e02.up.railway.app/availability
+   ```
+
+2. **Install and run locally**:
    ```bash
    pip install -r requirements.txt
-   ```
-
-2. **Configure environment**:
-   ```bash
    cp .env.example .env
    # Add your OPENAI_API_KEY
+   python main.py api      # Start API server
+   python test_api.py      # Run comprehensive tests
    ```
 
-3. **Test locally**:
-   ```bash
-   python main.py          # Test mode
-   python main.py api      # API server
-   python test_api.py      # Run API tests
-   ```
+### 🌐 dApp Interface (Development)
 
-4. **Access live API**:
-   ```
-   https://web-production-d0e02.up.railway.app
-   ```
-
-### dApp Interface (Development)
-
-1. **Install Node.js dependencies**:
+1. **Full dApp experience**:
    ```bash
    npm install
-   ```
-
-2. **Start the web server**:
-   ```bash
    npm run serve
+   # Visit http://localhost:8080
    ```
 
-3. **Open your browser**:
-   ```
-   http://localhost:8080
-   ```
+2. **Test wallet integration**:
+   - Connect Begin Wallet, Nami, Eternl, or other Cardano wallets
+   - Experience the complete Masumi success flow
+   - Test payment processing and job tracking
 
 ## 📡 API Endpoints (Production)
 
@@ -354,3 +358,47 @@ This project was built for and won the Masumi Network AI Agent Challenge:
 **Built for the Masumi Network AI Agent Challenge**  
 **Deployed at**: https://web-production-d0e02.up.railway.app  
 **Framework**: CrewAI + FastAPI + React-style dApp
+## 🏆 M
+asumi Network Challenge Submission
+
+### 🎯 Challenge Requirements ✅
+- **✅ AI Agent Deployed**: Live at https://web-production-d0e02.up.railway.app
+- **✅ Web2/Web3 Use Case**: Career guidance + Cardano ecosystem integration
+- **✅ Masumi Integration**: Complete testnet payment flow with success UX
+- **✅ Wallet Connection**: Begin Wallet and other Cardano wallets supported
+- **✅ Production Ready**: MIP-003 compliant API with proper error handling
+
+### 🚀 Submission Details
+- **Challenge URL**: https://masumi.agorize-platform.com/en/challenges/india-codex-masumi-track
+- **Live API**: https://web-production-d0e02.up.railway.app
+- **Demo**: [masumi-demo.html](./masumi-demo.html) - Complete integration showcase
+- **Rewards**: ₹2000 Amazon Gift Card (first 20) + $750/$450/$300 (top 3)
+
+### 🏅 Competitive Advantages
+1. **✅ CrewAI Multi-Agent System** - Sophisticated AI architecture with specialized agents
+2. **✅ Complete Masumi Integration** - Seamless wallet connection → payment → success flow
+3. **✅ Begin Wallet Specialization** - Unique eSIM rewards and metadata features
+4. **✅ Cardano Ecosystem Focus** - Deep integration with Project Catalyst and DeFi
+5. **✅ Production Deployment** - Live, tested, and ready for immediate use
+6. **✅ Professional UX** - Clean success flows and error handling
+7. **✅ Real-World Utility** - Tangible value through eSIM rewards and NFT achievements
+
+### 🧪 Test the Integration
+1. **Quick Demo**: Open [masumi-demo.html](./masumi-demo.html)
+2. **Live API**: `curl https://web-production-d0e02.up.railway.app/availability`
+3. **Full dApp**: `npm run serve` → http://localhost:8080
+4. **Wallet Test**: Connect Begin Wallet or any Cardano wallet to see success flow
+
+## 🎉 Demo Links
+
+- **🚀 Production API**: https://web-production-d0e02.up.railway.app
+- **🎮 Interactive Demo**: [masumi-demo.html](./masumi-demo.html)
+- **🌐 Full dApp**: `npm run serve` → http://localhost:8080
+- **🧪 API Testing**: `python test_api.py`
+- **🔗 Begin Wallet Test**: [test-begin-wallet.html](./test-begin-wallet.html)
+
+---
+
+**🏆 Ready for Masumi Network Challenge Judging**  
+**Framework**: CrewAI + FastAPI + Modern Web Interface  
+**Deployment**: Railway (Production) + Multi-platform support

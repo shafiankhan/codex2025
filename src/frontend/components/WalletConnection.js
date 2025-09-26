@@ -2,10 +2,13 @@
  * Wallet Connection Component
  */
 
+import { MasumiSuccessFlow } from './MasumiSuccessFlow.js';
+
 export class WalletConnection {
     constructor(walletManager) {
         this.walletManager = walletManager;
         this.isConnecting = false;
+        this.masumiFlow = new MasumiSuccessFlow(walletManager);
     }
 
     render(container) {
@@ -74,9 +77,13 @@ export class WalletConnection {
                 // Single wallet was connected directly
                 this.updateDisplay();
 
+                // Show Masumi success flow
+                const walletInfo = this.walletManager.getWalletInfo();
+                this.masumiFlow.showWalletConnectionSuccess(walletInfo);
+
                 // Dispatch wallet connected event
                 window.dispatchEvent(new CustomEvent('wallet-connected', {
-                    detail: this.walletManager.getWalletInfo()
+                    detail: walletInfo
                 }));
             }
         } catch (error) {
@@ -154,9 +161,13 @@ export class WalletConnection {
             await this.walletManager.connectWallet(walletKey);
             this.updateDisplay();
 
+            // Show Masumi success flow
+            const walletInfo = this.walletManager.getWalletInfo();
+            this.masumiFlow.showWalletConnectionSuccess(walletInfo);
+
             // Dispatch wallet connected event
             window.dispatchEvent(new CustomEvent('wallet-connected', {
-                detail: this.walletManager.getWalletInfo()
+                detail: walletInfo
             }));
 
         } catch (error) {

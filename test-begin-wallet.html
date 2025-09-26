@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Begin Wallet Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #6c757d; cursor: not-allowed; }
+        .wallet-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 Begin Wallet Connection Test</h1>
+        <p>This page helps you test and debug Begin Wallet connection for the Cardano Career Navigator.</p>
+        
+        <div id="status"></div>
+        
+        <button onclick="checkWallets()">🔍 Check Available Wallets</button>
+        <button onclick="connectBeginWallet()">🔗 Connect Begin Wallet</button>
+        <button onclick="testBeginFeatures()">⚡ Test Begin Features</button>
+        <button onclick="clearResults()">🗑️ Clear Results</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let connectedWallet = null;
+        
+        function log(message, type = 'info') {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+            console.log(message);
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('status').innerHTML = '';
+        }
+        
+        async function checkWallets() {
+            log('🔍 Checking for Cardano wallets...', 'info');
+            
+            // Wait for wallets to load
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            const wallets = [];
+            
+            // Check window.cardano
+            if (window.cardano) {
+                log('✅ window.cardano found', 'success');
+                
+                const cardanoWallets = Object.keys(window.cardano);
+                log(`📋 Cardano wallets: ${cardanoWallets.join(', ')}`, 'info');
+                
+                // Check each wallet
+                for (const wallet of cardanoWallets) {
+                    try {
+                        const api = window.cardano[wallet];
+                        const name = api.name || wallet;
+                        const version = api.version || 'unknown';
+                        wallets.push(`${name} (${version})`);
+                        log(`✅ ${name} detected (version: ${version})`, 'success');
+                    } catch (error) {
+                        log(`⚠️ Error checking ${wallet}: ${error.message}`, 'error');
+                    }
+                }
+            } else {
+                log('❌ window.cardano not found', 'error');
+            }
+            
+            // Check for Begin Wallet specifically
+            const beginChecks = [
+                { path: 'window.cardano.begin', value: window.cardano?.begin },
+                { path: 'window.cardano.beginwallet', value: window.cardano?.beginwallet },
+                { path: 'window.cardano.Begin', value: window.cardano?.Begin },
+                { path: 'window.begin', value: window.begin },
+                { path: 'window.BeginWallet', value: window.BeginWallet }
+            ];
+            
+            log('🔍 Checking Begin Wallet specific paths...', 'info');
+            let beginFound = false;
+            
+            for (const check of beginChecks) {
+                if (check.value) {
+                    log(`✅ Begin Wallet found at ${check.path}`, 'success');
+                    beginFound = true;
+                    
+                    // Try to get more info
+                    try {
+                        const info = {
+                            name: check.value.name || 'Begin Wallet',
+                            version: check.value.version || 'unknown',
+                            isEnabled: typeof check.value.isEnabled === 'function'
+                        };
+                        log(`📋 Begin Wallet info: ${JSON.stringify(info, null, 2)}`, 'info');
+                    } catch (error) {
+                        log(`⚠️ Error getting Begin Wallet info: ${error.message}`, 'error');
+                    }
+                } else {
+                    log(`❌ No Begin Wallet at ${check.path}`, 'error');
+                }
+            }
+            
+            if (!beginFound) {
+                log('❌ Begin Wallet not detected. Please install Begin Wallet extension.', 'error');
+                log('💡 Visit Begin Wallet website to download and install the extension.', 'info');
+            }
+            
+            // Show summary
+            if (wallets.length > 0) {
+                log(`📊 Summary: Found ${wallets.length} wallet(s): ${wallets.join(', ')}`, 'success');
+            } else {
+                log('📊 Summary: No Cardano wallets found', 'error');
+            }
+        }
+        
+        async function connectBeginWallet() {
+            log('🔗 Attempting to connect to Begin Wallet...', 'info');
+            
+            try {
+                // Find Begin Wallet
+                const beginWallet = window.cardano?.begin || 
+                                  window.cardano?.beginwallet || 
+                                  window.cardano?.Begin ||
+                                  window.begin ||
+                                  window.BeginWallet;
+                
+                if (!beginWallet) {
+                    throw new Error('Begin Wallet not found. Please install the Begin Wallet extension.');
+                }
+                
+                log('✅ Begin Wallet API found', 'success');
+                
+                // Check if already enabled
+                const isEnabled = await beginWallet.isEnabled();
+                log(`📋 Begin Wallet enabled status: ${isEnabled}`, 'info');
+                
+                // Enable the wallet
+                log('🔓 Requesting wallet access...', 'info');
+                const api = await beginWallet.enable();
+                
+                if (!api) {
+                    throw new Error('Failed to enable Begin Wallet');
+                }
+                
+                log('✅ Begin Wallet connected successfully!', 'success');
+                connectedWallet = api;
+                
+                // Get wallet information
+                try {
+                    const networkId = await api.getNetworkId();
+                    const balance = await api.getBalance();
+                    const changeAddress = await api.getChangeAddress();
+                    const usedAddresses = await api.getUsedAddresses();
+                    
+                    const walletInfo = {
+                        networkId: networkId,
+                        balance: balance,
+                        changeAddress: changeAddress,
+                        usedAddresses: usedAddresses.length
+                    };
+                    
+                    log('📋 Wallet Information:', 'success');
+                    log(`<pre>${JSON.stringify(walletInfo, null, 2)}</pre>`, 'info');
+                    
+                } catch (infoError) {
+                    log(`⚠️ Could not get all wallet info: ${infoError.message}`, 'error');
+                }
+                
+            } catch (error) {
+                log(`❌ Failed to connect to Begin Wallet: ${error.message}`, 'error');
+                
+                if (error.message.includes('User declined')) {
+                    log('💡 Connection was cancelled by user. Please try again and approve the connection.', 'info');
+                } else if (error.message.includes('not found')) {
+                    log('💡 Begin Wallet extension not installed. Please install it from the Begin Wallet website.', 'info');
+                }
+            }
+        }
+        
+        async function testBeginFeatures() {
+            if (!connectedWallet) {
+                log('❌ Please connect Begin Wallet first', 'error');
+                return;
+            }
+            
+            log('⚡ Testing Begin Wallet specific features...', 'info');
+            
+            try {
+                // Test basic functions
+                const tests = [
+                    { name: 'getNetworkId', func: () => connectedWallet.getNetworkId() },
+                    { name: 'getBalance', func: () => connectedWallet.getBalance() },
+                    { name: 'getChangeAddress', func: () => connectedWallet.getChangeAddress() },
+                    { name: 'getUsedAddresses', func: () => connectedWallet.getUsedAddresses() }
+                ];
+                
+                for (const test of tests) {
+                    try {
+                        const result = await test.func();
+                        log(`✅ ${test.name}: Success`, 'success');
+                        log(`📋 Result: ${JSON.stringify(result)}`, 'info');
+                    } catch (error) {
+                        log(`❌ ${test.name}: ${error.message}`, 'error');
+                    }
+                }
+                
+                // Test Begin Wallet specific features (if available)
+                log('🔍 Checking for Begin Wallet specific features...', 'info');
+                
+                // Check for eSIM features
+                if (connectedWallet.getESimInfo) {
+                    try {
+                        const esimInfo = await connectedWallet.getESimInfo();
+                        log('✅ eSIM features available', 'success');
+                        log(`📋 eSIM Info: ${JSON.stringify(esimInfo)}`, 'info');
+                    } catch (error) {
+                        log(`⚠️ eSIM features error: ${error.message}`, 'error');
+                    }
+                } else {
+                    log('ℹ️ eSIM features not available in this version', 'info');
+                }
+                
+                // Check for metadata features
+                if (connectedWallet.getMetadata) {
+                    try {
+                        const metadata = await connectedWallet.getMetadata();
+                        log('✅ Metadata features available', 'success');
+                        log(`📋 Metadata: ${JSON.stringify(metadata)}`, 'info');
+                    } catch (error) {
+                        log(`⚠️ Metadata features error: ${error.message}`, 'error');
+                    }
+                } else {
+                    log('ℹ️ Metadata features not available in this version', 'info');
+                }
+                
+            } catch (error) {
+                log(`❌ Feature testing failed: ${error.message}`, 'error');
+            }
+        }
+        
+        // Auto-check wallets on page load
+        window.addEventListener('load', () => {
+            setTimeout(checkWallets, 1000);
+        });
+    </script>
+</body>
+</html>
