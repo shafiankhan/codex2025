@@ -47,11 +47,6 @@ python main.py api      # API server on port 8000
 - `POST /start_job` - Start AI task
 - `GET /status?job_id=<id>` - Check job status
 
-## Challenge Submission
-
-- **URL**: https://masumi.agorize-platform.com/en/challenges/india-codex-masumi-track
-- **Rewards**: First 20 deployments get ₹2000 Amazon Gift Card
-- **Top 3**: $750, $450, $300
 
 ## Unique Features
 
